@@ -32,18 +32,20 @@ class SixthActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
 // Menampilkan fragment pertama secara default
-        replaceFragment(SatuFragment(), addToBackStack = false)
+        replaceFragment(SatuFragment())
 // Setup event click untuk mengganti fragment
-        binding.btnFragment1.setOnClickListener { replaceFragment(SatuFragment()) }
-        binding.btnFragment2.setOnClickListener { replaceFragment(DuaFragment()) }
-        binding.btnFragment3.setOnClickListener { replaceFragment(TigaFragment()) }
+        binding.btnFragment1.setOnClickListener { replaceFragment(SatuFragment())
+        }
+        binding.btnFragment2.setOnClickListener { replaceFragment(DuaFragment())
+            }
+        binding.btnFragment3.setOnClickListener { replaceFragment(TigaFragment())
+            }
     }
 
     private fun replaceFragment(fragment: Fragment, addToBackStack: Boolean = true) {
         val transaction = supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment)
-        if (addToBackStack) transaction.addToBackStack(null)
-        transaction.commit()
+            .commit()
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
