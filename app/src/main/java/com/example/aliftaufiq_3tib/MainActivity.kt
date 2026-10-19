@@ -28,10 +28,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val user = intent.getStringExtra("user")
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
         val pass = intent.getStringExtra("Pass")
         val umur = intent.getIntExtra("Umur", 0 )
-        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val user = sharedPref.getString("username", "Pengguna")
+
 
 
         Log.e("Hasil",  "Umur $umur")
