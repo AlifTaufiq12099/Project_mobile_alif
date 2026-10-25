@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".fragment.DuaFragment">
+    tools:context=".Home.fragment.DuaFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

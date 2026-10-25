@@ -8,10 +8,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.aliftaufiq_3tib.Pertemuan5.LimaActivity
+import com.example.aliftaufiq_3tib.Home.Pertemuan5.LimaActivity
 import com.example.aliftaufiq_3tib.databinding.ActivityMainBinding
-import com.example.aliftaufiq_3tib.fragment.SixthActivity
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.example.aliftaufiq_3tib.Home.fragment.SixthActivity
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {

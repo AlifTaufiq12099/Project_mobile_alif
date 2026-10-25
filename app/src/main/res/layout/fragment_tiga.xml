@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".fragment.TigaFragment">
+    tools:context=".Home.fragment.TigaFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
