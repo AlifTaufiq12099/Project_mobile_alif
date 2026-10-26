@@ -25,8 +25,8 @@ class MessageActivity : AppCompatActivity() {
         }
         val nama  = intent.getStringExtra("SENDER")
         val pesan  = intent.getStringExtra("PESAN")
-//
-//        binding.txtnama.text = nama
-//        binding.txtpesan.text =pesan
+
+        binding.txtnama.text = nama
+        binding.txtpesan.text =pesan
     }
 }
