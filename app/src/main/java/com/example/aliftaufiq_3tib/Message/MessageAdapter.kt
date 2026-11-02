@@ -3,10 +3,15 @@ package com.example.aliftaufiq_3tib.Message
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.bumptech.glide.Glide
+import com.example.aliftaufiq_3tib.R
 import com.example.aliftaufiq_3tib.databinding.ItemMessageBinding
 import kotlin.jvm.java
 
@@ -38,6 +43,8 @@ class MessageAdapter(
 //                Snackbar.LENGTH_SHORT
 //            ).show()
         }
+
         return view
     }
+
 }

@@ -7,7 +7,7 @@
     android:background="#DDD5CA"
     tools:context=".Message.MessageFragment">
 
-    <!-- APP BAR LAYOUT & TOOLBAR (SESUAI DENGAN LOGIC KOTLIN) -->
+    <!-- APP BAR LAYOUT & TOOLBAR -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -25,404 +25,69 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- AREA KONTEN SCROLLABLE -->
-    <androidx.core.widget.NestedScrollView
+    <!-- KONTAINER UTAMA -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
+        android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <!-- FILTER MATERIAL CHIPS -->
+        <HorizontalScrollView
+            android:id="@+id/scrollChips"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <!-- SUBTITLE PENGAPIT TOOLBAR -->
-            <TextView
-                android:id="@+id/tvSubTitlePesan"
-                android:layout_width="0dp"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupFilterPesan"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Terhubung langsung dengan maestro kriya nusantara"
-                android:textColor="#666666"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toStartOf="@id/btnSearch"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:singleLine="true"
+                app:singleSelection="true">
 
-            <!-- BUTTON SEARCH & FILTER -->
-            <ImageView
-                android:id="@+id/btnFilter"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#FDEEE7"
-                android:padding="10dp"
-                android:src="@android:drawable/ic_menu_manage"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/btnSearch"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="#FDEEE7"
-                android:padding="10dp"
-                android:src="@android:drawable/ic_menu_search"
-                app:layout_constraintEnd_toStartOf="@id/btnFilter"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- FILTER CHIPS -->
-            <HorizontalScrollView
-                android:id="@+id/scrollChips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvSubTitlePesan">
-
-                <LinearLayout
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSemuaPesan"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:checked="true"
+                    android:text="Semua Pesan" />
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        app:cardBackgroundColor="#7A3013"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="0dp"
-                        app:strokeWidth="0dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="10dp"
-                            android:text="✓  Semua Pesan"
-                            android:textColor="#FFFFFF"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        app:cardBackgroundColor="#FDEEE7"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="0dp"
-                        app:strokeWidth="0dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="10dp"
-                            android:text="Custom Order  (2)"
-                            android:textColor="#333333"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardBackgroundColor="#FDEEE7"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="0dp"
-                        app:strokeWidth="0dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="10dp"
-                            android:text="Transaksi Aktif"
-                            android:textColor="#333333"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <!-- SECTION: MAESTRO LANGGANAN -->
-            <TextView
-                android:id="@+id/tvTitleMaestro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Maestro Langganan"
-                android:textColor="#1E1E1E"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scrollChips" />
-
-            <TextView
-                android:id="@+id/tvLihatSemuaMaestro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lihat Semua ›"
-                android:textColor="#7A3013"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/tvTitleMaestro"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvTitleMaestro" />
-
-            <HorizontalScrollView
-                android:id="@+id/scrollMaestro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitleMaestro">
-
-                <LinearLayout
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCustomOrder"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="Custom Order (2)" />
 
-                    <LinearLayout
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="54dp"
-                            android:layout_height="54dp"
-                            app:cardBackgroundColor="#FDEEE7"
-                            app:cardCornerRadius="27dp"
-                            app:cardElevation="0dp"
-                            app:strokeWidth="0dp">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:src="@android:drawable/ic_menu_search" />
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Eksplor"
-                            android:textColor="#333333"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="75dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="54dp"
-                            android:layout_height="54dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/yohana"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Ibu Yohana"
-                            android:textColor="#333333"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Online"
-                            android:textColor="#008800"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="75dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="54dp"
-                            android:layout_height="54dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/pakmade"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Pak Made"
-                            android:textColor="#333333"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15m lalu"
-                            android:textColor="#888888"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="75dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:layout_width="54dp"
-                            android:layout_height="54dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/siti"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Ibu Siti"
-                            android:textColor="#333333"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Online"
-                            android:textColor="#008800"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <!-- SECTION: OBROLAN PENGRAJIN -->
-            <TextView
-                android:id="@+id/tvTitleObrolan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Obrolan Pengrajin"
-                android:textColor="#1E1E1E"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scrollMaestro" />
-
-            <TextView
-                android:id="@+id/tvJumlahObrolan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4 Obrolan Aktif"
-                android:textColor="#888888"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/tvTitleObrolan"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tvTitleObrolan" />
-
-            <!-- LISTVIEW UTAMA (ID: listMessageItems) -->
-
-            <!-- CARD JAMINAN KEASLIAN -->
-            <ListView
-                android:id="@+id/listMessageItems"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_marginTop="12dp"
-                android:divider="@null"
-                android:dividerHeight="10dp"
-                android:nestedScrollingEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitleObrolan" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardJaminan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="#FDF1EB"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:strokeWidth="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/listMessageItems">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTransaksiAktif"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:text="Transaksi Aktif" />
 
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:background="#A3E4D7"
-                        android:padding="6dp"
-                        android:src="@android:drawable/ic_lock_lock" />
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:orientation="vertical">
+        <!-- LISTVIEW UTAMA (FULL SISA LAYAR) -->
+        <ListView
+            android:id="@+id/listMessageItems"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollChips"
+            tools:listitem="@android:layout/simple_list_item_2" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jaminan Keaslian &amp; Transaksi KriyaKu"
-                            android:textColor="#1E1E1E"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Selalu diskusikan dan selesaikan pesanan custom melalui sistem resmi KriyaKu demi sertifikasi keaslian karya 100% serta perlindungan hak cipta maestro nusantara."
-                            android:textColor="#666666"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- BUTTON MULAI OBROLAN -->
-            <Button
-                android:id="@+id/btnMulaiObrolan"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="#086142"
-                android:text="Mulai Obrolan / Custom Order Baru"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:cornerRadius="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardJaminan" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

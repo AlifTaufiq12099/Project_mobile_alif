@@ -56,6 +56,21 @@
             android:name=".Message.MessageActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Message.TutorialMessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Message.Tutorial1Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Message.Tutorial2Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Message.Tutorial3Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Message.MessageAdapter"
+            android:exported="false" />
     </application>
 
 </manifest>
