@@ -71,6 +71,10 @@
         <activity
             android:name=".Message.MessageAdapter"
             android:exported="false" />
+        <activity
+            android:name=".Home.anyaman.AnyamanActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

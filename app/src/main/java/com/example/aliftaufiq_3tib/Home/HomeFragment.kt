@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.example.aliftaufiq_3tib.Home.Pertemuan5.LimaActivity
 import com.example.aliftaufiq_3tib.Home.Pertemuan5.WebViewActivity
+import com.example.aliftaufiq_3tib.Home.anyaman.AnyamanActivity
 import com.example.aliftaufiq_3tib.Home.fragment.SixthActivity
 import com.example.aliftaufiq_3tib.LoginActivity
 import com.example.aliftaufiq_3tib.activity_detail
@@ -75,6 +76,10 @@ class HomeFragment : Fragment() {
 //        binding.btnlihatfragment.setOnClickListener {
 //            startActivity(Intent(requireContext(), SixthActivity::class.java))
 //        }
+        binding.btnAnyaman.setOnClickListener {
+            val intent = Intent(requireContext(), AnyamanActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnlihatweb.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
