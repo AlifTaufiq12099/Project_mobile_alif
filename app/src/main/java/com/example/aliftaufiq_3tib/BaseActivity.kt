@@ -8,7 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.aliftaufiq_3tib.Home.HomeFragment
 import com.example.aliftaufiq_3tib.Message.MessageFragment
-import com.example.aliftaufiq_3tib.More.MoreFragment
 import com.example.aliftaufiq_3tib.databinding.ActivityBaseBinding
 import com.example.aliftaufiq_3tib.keranjang.KeranjangFragment
 import com.example.aliftaufiq_3tib.profile.ProfileFragment
@@ -48,10 +47,6 @@ class BaseActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.more -> {
-                    replaceFragment(MoreFragment())
-                    true
-                }
                 else -> false // false jika item tidak dikenal
             }
         }

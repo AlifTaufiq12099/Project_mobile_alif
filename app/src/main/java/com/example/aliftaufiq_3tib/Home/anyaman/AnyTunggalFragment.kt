@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.aliftaufiq_3tib.R
+import com.example.aliftaufiq_3tib.data.AppDatabase
+import com.example.aliftaufiq_3tib.data.entity.CartEntity
 import com.example.aliftaufiq_3tib.databinding.FragmentAnyTunggalBinding
+import kotlinx.coroutines.launch
 
 
 class AnyTunggalFragment : Fragment() {
@@ -54,11 +56,7 @@ class AnyTunggalFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val Anyamanadapter = ProAnyAdapter(Anyamanlist) { selectedItem ->
-            Toast.makeText(
-                requireContext(),
-                "Anda memilih ${selectedItem.name}",
-                Toast.LENGTH_SHORT
-            ).show()
+            addToCart(selectedItem)
         }
 
         binding.rvProducts.apply {
@@ -71,5 +69,28 @@ class AnyTunggalFragment : Fragment() {
         }
     }
 
+    private fun addToCart(item: Anyamanmodel) {
+        val price = item.price.filter { it.isDigit() }.toLongOrNull() ?: 0L
+        viewLifecycleOwner.lifecycleScope.launch {
+            val db = AppDatabase.getInstance(requireContext())
+            val existing = db.cartDao().findByProductName(item.name)
+            if (existing != null) {
+                db.cartDao().update(existing.copy(quantity = existing.quantity + 1))
+            } else {
+                db.cartDao().insert(
+                    CartEntity(
+                        productName = item.name,
+                        price = price,
+                        imageUrl = item.imageUrl
+                    )
+                )
+            }
+            Toast.makeText(
+                requireContext(),
+                "${item.name} ditambahkan ke keranjang",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
 }
